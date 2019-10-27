@@ -7,7 +7,7 @@ public class Distance {
 
         Point p1 = new Point(5.5,1.2);
         Point p2 = new Point(3.4,3.3);
-        System.out.println("Расстояние между точками равно " + p1.x + ":" + p1.y + " и " + p2.x + ":" + p2.y + " равно " + distance(p1,p2));
+        System.out.println("Расстояние между точками " + p1.x + ":" + p1.y + " и " + p2.x + ":" + p2.y + " равно " + distance(p1,p2));
     }
 
     public static void hello (String somebody){

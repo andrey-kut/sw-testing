@@ -8,11 +8,12 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import java.util.concurrent.TimeUnit;
 
 public class ApplicationManager {
-
     FirefoxDriver wd;
 
+    private NavigationHelper navigationHelper;
     private ContactHelper contactHelper;
     private GroupHelper groupHelper;
+    private SessionHelper sessionHelper;
 
     public void init() {
         wd = new FirefoxDriver();
@@ -20,21 +21,11 @@ public class ApplicationManager {
         wd.get("http://localhost:8080/addressbook/index.php");
         contactHelper = new ContactHelper(wd);
         groupHelper = new GroupHelper(wd);
-        login("admin", "secret");
+        navigationHelper = new NavigationHelper(wd);
+        sessionHelper = new SessionHelper(wd);
+        sessionHelper.login("admin", "secret");
     }
 
-    private void login(String username, String password) {
-        wd.findElement(By.name("user")).click();
-        wd.findElement(By.name("user")).clear();
-        wd.findElement(By.name("user")).sendKeys(username);
-        wd.findElement(By.name("pass")).clear();
-        wd.findElement(By.name("pass")).sendKeys(password);
-        wd.findElement(By.xpath("//input[@value='Login']")).click();
-    }
-
-    public void gotoGroupPage() {
-        wd.findElement(By.linkText("groups")).click();
-    }
 
     public void stop() {
         wd.quit();
@@ -62,15 +53,15 @@ public class ApplicationManager {
         wd.findElement(By.linkText("Logout")).click();
     }
 
-    public void goToHomePage() {
-      wd.findElement(By.linkText("home")).click();
-    }
-
     public GroupHelper getGroupHelper() {
         return groupHelper;
     }
 
     public ContactHelper getContactHelper() {
         return contactHelper;
+    }
+
+    public NavigationHelper getNavigationHelper() {
+        return navigationHelper;
     }
 }

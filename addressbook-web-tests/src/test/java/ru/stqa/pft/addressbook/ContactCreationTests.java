@@ -30,7 +30,7 @@ public class ContactCreationTests {
   public void testUntitledTestCase() throws Exception {
     addNewContact();
     fillContactForm(new ContactData("Andrey", "Kutischev", "akut", "77777777", "a.kut@gmail.com"));
-    wd.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Notes:'])[1]/following::input[1]")).click();
+    wd.findElement(By.xpath("(//input[@name='submit'])[2]")).click();
     wd.findElement(By.linkText("home page")).click();
     wd.findElement(By.linkText("Logout")).click();
   }

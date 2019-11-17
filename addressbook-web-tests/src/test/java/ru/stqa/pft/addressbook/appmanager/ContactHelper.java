@@ -58,7 +58,7 @@ public class ContactHelper extends BaseHelper {
       }
     }
 
-    public void initContactModification() {click(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='a.kut@gmail.com'])[1]/following::img[2]"));
+    public void initContactModification() {click(By.xpath("//img[@title='Edit']"));
     }
 
     public void submitContactModification() {click(By.name("update"));

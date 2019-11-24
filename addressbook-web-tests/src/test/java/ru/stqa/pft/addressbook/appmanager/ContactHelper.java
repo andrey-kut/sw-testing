@@ -18,6 +18,10 @@ public class ContactHelper extends BaseHelper {
         super(wd);
     }
 
+    public void returnToContactPage() {
+        click(By.linkText("home"));
+    }
+
     public void fillContactForm(ContactData contactData, boolean creation) {
         type(By.name("firstname"), contactData.getFirstname());
         type(By.name("lastname"), contactData.getLastname());
@@ -71,5 +75,16 @@ public class ContactHelper extends BaseHelper {
     }
 
     public void submitContactModification() {click(By.name("update"));
+    }
+
+    public void createContact(ContactData contact, boolean creation) {
+        addNewContact();
+        fillContactForm(contact, creation);
+        submitContactCreation();
+        returnToContactPage();
+    }
+
+    public boolean isThereAContact() {
+        return isElementPresent(By.xpath("//table[@id='maintable']/tbody/tr[2]/td/input"));
     }
 }

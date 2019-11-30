@@ -13,7 +13,7 @@ public class ContactDeletionTests extends TestBase{
     if (! app.getContactHelper().isThereAContact()) {
       app.getContactHelper().createContact(new ContactData("Andrey", "Kutischev", "akut", "77777777", "a.kut@gmail.com", "test1"), true);
     }
-    app.getContactHelper().selectContact();
+    app.getContactHelper().selectContact(before - 1);
     app.getContactHelper().acceptNextAlert = true;
     app.getContactHelper().deleteSelectedContact();
     app.getContactHelper().confirmContactDeletePopup();

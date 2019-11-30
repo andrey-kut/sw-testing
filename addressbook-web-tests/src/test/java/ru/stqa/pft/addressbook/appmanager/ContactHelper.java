@@ -51,8 +51,8 @@ public class ContactHelper extends BaseHelper {
       click(By.xpath("//input[@value='Delete']"));
     }
 
-    public void selectContact() {
-      click(By.xpath("//table[@id='maintable']/tbody/tr[2]/td/input"));
+    public void selectContact(int index) {
+        wd.findElements(By.name("selected[]")).get(index).click();
     }
 
     private String closeAlertAndGetItsText() {
